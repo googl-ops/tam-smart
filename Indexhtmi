@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تام الثقافية 2026 | منصة الإرث اليمني الذكية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;700&family=Cairo:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Noto+Kufi+Arabic:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-logo">تام</div>
+        <div class="loader-bar"><div class="loader-progress"></div></div>
+        <div class="loader-text">جاري فتح بوابة الزمن...</div>
+    </div>
+
+    <!-- Cursors -->
+    <div class="custom-cursor" id="cursor"></div>
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Particles -->
+    <div class="gold-particles" id="goldParticles"></div>
+    
+    <!-- حروف مسند ذهبية تتطاير في الخلفية -->
+    <div class="musnad-particles" id="musnadParticles"></div>
+    
+    <!-- وعول ذهبية تسبح في الفضاء -->
+    <div class="wolves-container" id="wolvesContainer"></div>
+
+    <!-- Navigation - الأشرطة الثلاثة على اليمين -->
+    <nav class="nav-bar">
+        <div class="nav-right-section">
+            <div class="menu-trigger" id="menuTrigger">
+                <div class="menu-line"></div>
+                <div class="menu-line"></div>
+                <div class="menu-line"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Side Menu -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+    <div class="side-menu" id="sideMenu">
+        <div class="menu-item" onclick="showPage('home')">
+            <div class="menu-item-title"><i class="fas fa-home"></i>الرئيسية</div>
+            <div class="menu-item-desc">بوابة الزمن - الواجهة الرئيسية</div>
+        </div>
+        <div class="menu-item" onclick="showPage('about')">
+            <div class="menu-item-title"><i class="fas fa-landmark"></i>من نحن</div>
+            <div class="menu-item-desc">الرؤية، الرسالة، والقيم الجوهرية</div>
+        </div>
+        <div class="menu-item" onclick="showPage('achievements')">
+            <div class="menu-item-title"><i class="fas fa-trophy"></i>سجل الإنجازات</div>
+            <div class="menu-item-desc">مسيرة العطاء</div>
+        </div>
+        <div class="menu-item" onclick="showPage('writers-search')">
+            <div class="menu-item-title"><i class="fas fa-users"></i>كُتاب وسير</div>
+            <div class="menu-item-desc">البحث الذكي عن الشعراء والكتاب وسيرهم</div>
+        </div>
+        <div class="menu-item" onclick="showPage('poets-portal')">
+            <div class="menu-item-title"><i class="fas fa-feather-alt"></i>بوابة شعراء سبأ وذي ريدان</div>
+            <div class="menu-item-desc">البوابة الشعرية الذكية - 21 محافظة</div>
+        </div>
+        <div class="menu-item" onclick="showPage('stories-portal')">
+            <div class="menu-item-title"><i class="fas fa-book-open"></i>بوابة القصة والرواية</div>
+            <div class="menu-item-desc">السرد اليمني الأصيل</div>
+        </div>
+        <div class="menu-item" onclick="showPage('proverbs-portal')">
+            <div class="menu-item-title"><i class="fas fa-comment-dots"></i>بوابة الأمثال الشعبية</div>
+            <div class="menu-item-desc">حكمة الشعب في أقواله</div>
+        </div>
+        <div class="menu-item" onclick="showPage('theater-portal')">
+            <div class="menu-item-title"><i class="fas fa-theater-masks"></i>بوابة المسرح</div>
+            <div class="menu-item-desc">المسرح اليمني والفنون الدرامية</div>
+        </div>
+        <div class="menu-item" onclick="showPage('children-portal')">
+            <div class="menu-item-title"><i class="fas fa-child"></i>بوابة أدب الأطفال</div>
+            <div class="menu-item-desc">الإبداع للأجيال الناشئة</div>
+        </div>
+        <div class="menu-item" onclick="showPage('art-portal')">
+            <div class="menu-item-title"><i class="fas fa-palette"></i>بوابة الرسم والفن التشكيلي</div>
+            <div class="menu-item-desc">الفنون التشكيلية اليمنية</div>
+        </div>
+        <div class="menu-item" onclick="showPage('studies-portal')">
+            <div class="menu-item-title"><i class="fas fa-graduation-cap"></i>بوابة الدراسات النقدية</div>
+            <div class="menu-item-desc">البحوث والدراسات الأدبية النقدية</div>
+        </div>
+        <div class="menu-item" onclick="showPage('library-portal')">
+            <div class="menu-item-title"><i class="fas fa-layer-group"></i>بوابة المكتبات</div>
+            <div class="menu-item-desc">الكتب الإلكترونية والمخطوطات</div>
+        </div>
+        <div class="menu-item" onclick="showPage('upload')">
+            <div class="menu-item-title"><i class="fas fa-cloud-upload-alt"></i>رفع المشاركات</div>
+            <div class="menu-item-desc">شارك إبداعك مع العالم</div>
+        </div>
+        <div class="menu-item" onclick="showPage('ai-lab')">
+            <div class="menu-item-title"><i class="fas fa-brain"></i>مختبر الذكاء الاصطناعي</div>
+            <div class="menu-item-desc">الفراهيدي الذكي والمدقق اللغوي</div>
+        </div>
+        <div class="menu-item" onclick="showPage('contact')">
+            <div class="menu-item-title"><i class="fas fa-envelope"></i>تواصل معنا</div>
+            <div class="menu-item-desc">انضم لشبكة المنصة</div>
+        </div>
+    </div>
+
+    <!-- Home Page -->
+    <div id="home" class="page active">
+        <section class="hero-section">
+            <div class="hero-content">
+                <!-- الشعار المدمج بدون خلفية منفصلة -->
+                <div class="hero-logo-section">
+                    <!-- تام بالمسند الصحيحة: 𐩩𐩱𐩣 -->
+                    <div class="hero-musnad" dir="ltr">𐩩𐩱𐩣</div>
+                    <div class="hero-english" dir="ltr">TAM</div>
+                    <div class="hero-arabic">تام</div>
+                    <div class="hero-separator"></div>
+                    <div class="hero-platform-name">منصة تام الثقافية الذكية</div>
+                </div>
+
+                <div class="hero-badge"><span>⚡</span><span>2026</span></div>
+
+                <p class="hero-subtitle hero-intro-text">
+                    أول منصة عربية تجمع بين الإرث الثقافي اليمني الأصيل<br>
+                    وقوة الذكاء الاصطناعي
+                </p>
+
+                <div class="cta-container">
+                    <button class="btn-primary" onclick="showPage('writers-search')">استكشف الكُتاب</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Portals -->
+        <div class="portals-grid">
+            <div class="portal-card" onclick="showPage('poets-portal')">
+                <i class="fas fa-feather-alt portal-icon"></i>
+                <h3 class="portal-title">بوابة شعراء سبأ وذي ريدان</h3>
+                <p class="portal-desc">البوابة الشعرية الذكية تضم 21 محافظة يمنية مع الفراهيدي الذكي للتحقق العروضي</p>
+            </div>
+            <div class="portal-card" onclick="showPage('stories-portal')">
+                <i class="fas fa-book-open portal-icon"></i>
+                <h3 class="portal-title">بوابة القصة والرواية</h3>
+                <p class="portal-desc">السرد اليمني الأصيل من القصة القصيرة إلى الرواية الطويلة</p>
+            </div>
+            <div class="portal-card" onclick="showPage('proverbs-portal')">
+                <i class="fas fa-comment-dots portal-icon"></i>
+                <h3 class="portal-title">بوابة الأمثال الشعبية</h3>
+                <p class="portal-desc">حكمة الشعب اليمني في أقواله المأثورة</p>
+            </div>
+            <div class="portal-card" onclick="showPage('theater-portal')">
+                <i class="fas fa-theater-masks portal-icon"></i>
+                <h3 class="portal-title">بوابة المسرح</h3>
+                <p class="portal-desc">المسرح اليمني والفنون الدرامية والتمثيلية</p>
+            </div>
+            <div class="portal-card" onclick="showPage('children-portal')">
+                <i class="fas fa-child portal-icon"></i>
+                <h3 class="portal-title">بوابة أدب الأطفال</h3>
+                <p class="portal-desc">الإبداع اليمني الموجه للأجيال الناشئة</p>
+            </div>
+            <div class="portal-card" onclick="showPage('art-portal')">
+                <i class="fas fa-palette portal-icon"></i>
+                <h3 class="portal-title">بوابة الرسم والفن التشكيلي</h3>
+                <p class="portal-desc">الفنون التشكيلية اليمنية والخط العربي</p>
+            </div>
+            <div class="portal-card" onclick="showPage('studies-portal')">
+                <i class="fas fa-graduation-cap portal-icon"></i>
+                <h3 class="portal-title">بوابة الدراسات النقدية</h3>
+                <p class="portal-desc">البحوث والدراسات الأدبية النقدية</p>
+            </div>
+            <div class="portal-card" onclick="showPage('library-portal')">
+                <i class="fas fa-layer-group portal-icon"></i>
+                <h3 class="portal-title">بوابة المكتبات</h3>
+                <p class="portal-desc">الكتب الإلكترونية والمخطوطات الرقمية</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Page -->
+    <div id="about" class="page">
+        <div class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title" style="font-size: 3.5rem;">من نحن</h1>
+                <p class="hero-subtitle">منصة تام الثقافية الذكية - نحو مجتمع معرفي يؤمن بقيم الجمال</p>
+            </div>
+        </div>
+        <div style="max-width: 1000px; margin: 0 auto; padding: 3rem 2rem;">
+            <div class="portal-card" style="margin-bottom: 3rem;">
+                <h3 class="portal-title">الرؤية Vision</h3>
+                <p class="portal-desc" style="font-size: 1.2rem; line-height: 2;">
+                    [سيتم إضافة نص الرؤية]
+                </p>
+            </div>
+            <div class="portal-card" style="margin-bottom: 3rem;">
+                <h3 class="portal-title" style="color: var(--electric-turquoise);">الرسالة Mission</h3>
+                <p class="portal-desc" style="font-size: 1.2rem; line-height: 2;">
+                    [سيتم إضافة نص الرسالة]
+                </p>
+            </div>
+            
+            <div class="section-header" style="margin-top: 4rem; margin-bottom: 2rem;">
+                <div class="section-title-en">Core Values</div>
+                <h2 class="section-title-ar">القيم الجوهرية</h2>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                <div class="category-card">
+                    <i class="fas fa-balance-scale category-icon"></i>
+                    <h4 class="category-name">العدالة والإنصاف</h4>
+                </div>
+                <div class="category-card">
+                    <i class="fas fa-star category-icon"></i>
+                    <h4 class="category-name">الحداثة والأصالة</h4>
+                </div>
+                <div class="category-card">
+                    <i class="fas fa-dove category-icon"></i>
+                    <h4 class="category-name">السلام</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Achievements Page -->
+    <div id="achievements" class="page">
+        <div class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title" style="font-size: 3.5rem;">سجل الإنجازات</h1>
+                <p class="hero-subtitle">مسيرة العطاء</p>
+            </div>
+        </div>
+        <div style="max-width: 900px; margin: 3rem auto; padding: 2rem; text-align: center;">
+            <p style="color: rgba(245, 240, 227, 0.7); font-size: 1.2rem; line-height: 2;">
+                [سيتم إضافة سجل الإنجازات]
+            </p>
+        </div>
+    </div>
+
+    <!-- Writers Search Page -->
+    <div id="writers-search" class="page">
+        <div class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title" style="font-size: 3rem;">كُتاب وسير</h1>
+                <p class="hero-subtitle">البحث الذكي عن الشعراء والكتاب وسيرهم الذاتية</p>
+            </div>
+        </div>
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" id="writerSearchInput" placeholder="ابحث عن كاتب، شاعر، ديوان، أو موضوع...">
+                <button onclick="searchWriters()"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+        <div class="search-results" id="searchResults"></div>
+        <div style="max-width: 900px; margin: 3rem auto; padding: 2rem; text-align: center;">
+            <p style="color: rgba(245, 240, 227, 0.7); font-size: 1.2rem; line-height: 2;">
+                [سيتم إضافة بيانات الكُتاب والسير الذاتية]
+            </p>
+        </div>
+    </div>
+
+    <!-- Poets Portal -->
+    <div id="poets-portal" class="page">
+        <div class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title" style="font-size: 3rem;">بوابة شعراء سبأ وذي ريدان</h1>
+                <!-- تعديل العبارة -->
+                <p class="hero-subtitle">تفيأ في المحافظات واستكشف كنوز الشعر اليمني</p>
+            </div>
+        </div>
+        <div class="gov-grid" id="governoratesGrid"></div>
+    </div>
+
+    <!-- Governorate Poetry Page -->
+    <div id="governorate-poetry-page" class="page">
+        <div class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title" id="poetryGovTitle" style="font-size: 3rem;"></h1>
+                <p class="hero-subtitle">اختر نوع الشعر</p>
+            </div>
+        </div>
+        <div class="categories-grid">
+            <div class="category-card" onclick="showCategory('faseeh-amoudi')">
+                <i class="fas fa-scroll category-icon"></i>
+                <h4 class="category-name">الشعر الفصيح العمودي</h4>
+            </div>
+            <div class="category-card" onclick="showCategory('faseeh-tafila')">
+                <i class="fas fa-rainbow category-icon"></i>
+                <h4 class="category-name">الشعر الفصيح التفعيلة</h4>
+            </div>
+            <div class="category-card" onclick="showCategory('nathr')">
+                <i class="fas fa-pen-fancy category-icon"></i>
+                <h4 class="category-name">النثر الأدبي</h4>
+            </div>
+            <div class="category-card" onclick="showCategory('himyari')">
+                <i class="fas fa-music category-icon"></i>
+                <h4 class="category-name">الشعر الحميني</h4>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 3rem;">
+            <button class="btn-secondary" onclick="showPage('poets-portal')">العودة للمحافظات</button>
+        </div>
+    </div>
+
+    <!-- Stories Portal -->
+    <div id="stories-portal" class="page">
+        <div class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title" style="font-size: 3rem;">بوابة القصة والرواية</h1>
+                <p class="hero-subtitle">السرد اليمني الأصيل من جميع المحافظات</p>
+            </div>
+        </div>
+        <div class="gov-grid" id="storiesGovGrid"></div>
+    </div>
+
+    <!-- Governorate Stories Page -->
+    <div id="governorate-stories-page" class="page">
+        <div class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title" id="storiesGovTitle" style="font-size: 3rem;"></h1>
+                <p class="hero-subtitle">اختر نوع السرد الأدبي</p>
+            </div>
+        </div>
+        <div class="categories-grid">
+            <div class="category-card" onclick="showCategory('novel')">
+                <i class="fas fa-book category-icon"></i>
+                <h4 class="category-name">الرواية</h4>
+            </div>
+            <div class="category-card" onclick="showCategory('short-story')">
+                <i class="fas fa-file-alt category-icon"></i>
+                <h4 class="category-name">القصة القصيرة</h4>
+            </div>
+            <!-- أيقونة القصة القصيرة جداً - شرطتين فوق بعض -->
+            <div class="category-card" onclick="showCategory('flash-fiction')">
+                <div class="short-lines-icon">
+                    <div class="short-line"></div>
+                    <div class="short-line"></div>
+                </div>
+                <h4 class="category-name">القصة القصيرة جداً</h4>
+            </div>
+            <div class="category-card" onclick="showCategory('thought')">
+                <i class="fas fa-feather category-icon"></i>
+                <h4 class="category-name">الخاطرة والمقال</h4>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 3rem;">
+            <button class="btn-secondary" onclick="showPage('stories-portal')">العودة للمحافظات</button>
+        </div>
+    </div>
+
+    <!-- Proverbs Portal -->
+    <div id="proverbs-portal" class="page">
+        <div class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title" style="font-size: 3rem;">بوابة الأمثال الشعبية</h1>
+                <p class="hero-subtitle">حكمة الشعب في أقواله من كل المحافظات</p>
+            </div>
+        </div>
+        <div class="gov-grid" id="proverbsGovGrid"></div>
+    </div>
+
+    <!-- Governorate Proverbs Page -->
+    <div id="governorate-proverbs-page" class="page">
+        <div class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title" id="proverbsGovTitle" style="font-size: 3rem;"></h1>
+                <p class="hero-subtitle">اختر نوع الأمثال</p>
+            </div>
+        </div>
+        <div class="categories-grid">
+            <div class="category-card" onclick="showCategory('general-proverbs')">
+                <i class="fas fa-comments category-icon"></i>
+                <h4 class="category-name">أمثال عامة</h4>
+            </div>
+            <div class="category-card" onclick="showCategory('agricultural-proverbs')">
+                <i class="fas fa-leaf category-icon"></i>
+                <h4 class="category-name">أمثال زراعية</h4>
+            </div>
+            <div class="category-card" onclick="showCategory('social-proverbs')">
+                <i class="fas fa-heart category-icon"></i>
+                <h4 class="category-name">أمثال اجتماعية</h4>
+            </div>
+            <div class="category-card" onclick="showCategory('weather-proverbs')">
+                <i class="fas fa-cloud-sun category-icon"></i>
+                <h4 class="category-name">أمثال مناخية</h4>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 3rem;">
+            <button class="btn-secondary" onclick="showPage('proverbs-portal')">العودة للمحافظات</button>
+        </div>
+    </div>
+
+    <!-- Theater Portal -->
+    <div id="theater-portal" class="page">
+        <div class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title" style="font-size: 3rem;">بوابة المسرح</h1>
+                <p class="hero-subtitle">المسرح اليمني والفنون الدرامية من كل المحافظات</p>
+            </div>
+        </div>
+        <div class="gov-grid" id="theaterGovGrid"></div>
+    </div>
+
+    <!-- Governorate Theater Page -->
+    <div id="governorate-theater-page" class="page">
+        <div class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title" id="theaterGovTitle" style="font-size: 3rem;"></h1>
+                <p class="hero-subtitle">اختر نوع العرض المسرحي</p>
+            </div>
+        </div>
+        <div class="categories-grid">
+            <div class="category-card" onclick="showCategory('theater-plays')">
+                <i class="fas fa-theater-masks category-icon"></i>
+                <h4 class="category-name">المسرحيات</h4>
+            </div>
+            <div class="category-card" onclick="showCategory('drama-films')">
+                <i class="fas fa-film category-icon"></i>
+                <h4 class="category-name">الأفلام الدرامية</h4>
+            </div>
+            <div class="category-card" onclick="showCategory('theater-teams')">
+                <i class="fas fa-users category-icon"></i>
+                <h4 class="category-name">الفرق المسرحية</h4>
+            </div>
+            <div class="category-card" onclick="showCategory('actors')">
+                <i class="fas fa-star category-icon"></i>
+                <h4 class="category-name">الممثلون</h4>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 3rem;">
+            <button class="btn-secondary" onclick="showPage('theater-portal')">العودة للمحافظات</button>
+        </div>
+    </div>
+
+    <!-- Children Portal -->
+    <div id="children-portal" class="page">
+        <div class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title" style="font-size: 3rem;">بوابة أدب الأطفال</h1>
+                <p class="hero-subtitle">الإبداع للأجيال الناشئة من كل المحافظات</p>
+            </div>
+        </div>
+        <div class="gov-grid" id="childrenGovGrid"></div>
+    </div>
+
+    <!-- Governorate Children Page -->
+    <div id="governorate-children-page" class="page">
+        <div class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title" id="childrenGovTitle" style="font-size: 3rem;"></h1>
+                <p class="hero-subtitle">اختر نوع أدب الأطفال</p>
+            </div>
+        </div>
+        <div class="categories-grid">
+            <div class="category-card" onclick="showCategory('folktales')">
+                <i class="fas fa-dragon category-icon"></i>
+                <h4 class="category-name">الحكايات الشعبية</h4>
+            </div>
+            <div class="category-card" onclick="showCategory('riddles')">
+                <i class="fas fa-puzzle-piece category-icon"></i>
+                <h4 class="category-name">الألغاز والأحاجي</h4>
+            </div>
+            <div class="category-card" onclick="showCategory('educational-stories')">
+                <i class="fas fa-rainbow category-icon"></i>
+                <h4 class="category-name">القصص التعليمية</h4>
+            </div>
+            <div class="category-card" onclick="showCategory('songs')">
+                <i class="fas fa-music category-icon"></i>
+                <h4 class="category-name">الأناشيد والأغاني</h4>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 3rem;">
+            <button class="btn-secondary" onclick="showPage('children-portal')">العودة للمحافظات</button>
+        </div>
+    </div>
+
+    <!-- Art Portal -->
+    <div id="art-portal" class="page">
+        <div class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title" style="font-size: 3rem;">بوابة الرسم والفن التشكيلي</h1>
+                <p class="hero-subtitle">الفنون التشكيلية اليمنية والخط العربي</p>
+            </div>
+        </div>
+        <div class="gov-grid" id="artGovGrid"></div>
+    </div>
+
+    <!-- Governorate Art Page -->
+    <div id="governorate-art-page" class="page">
+        <div class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title" id="artGovTitle" style="font-size: 3rem;"></h1>
+                <p class="hero-subtitle">اختر نوع الفن التشكيلي</p>
+            </div>
+        </div>
+        <div class="categories-grid">
+            <div class="category-card" onclick="showCategory('abstract-art')">
+                <i class="fas fa-shapes category-icon"></i>
+                <h4 class="category-name">الفن التجريدي</h4>
+            </div>
+            <div class="category-card" onclick="showCategory('realism-art')">
+                <i class="fas fa-portrait category-icon"></i>
+                <h4 class="category-name">الفن الواقعي</h4>
+            </div>
+            <div class="category-card" onclick="showCategory('impressionism-art')">
+                <i class="fas fa-sun category-icon"></i>
+                <h4 class="category-name">الانطباعية</h4>
+            </div>
+            <div class="category-card" onclick="showCategory('expressionism-art')">
+                <i class="fas fa-fire category-icon"></i>
+                <h4 class="category-name">التعبيرية</h4>
+            </div>
+            <div class="category-card" onclick="showCategory('surrealism-art')">
+                <i class="fas fa-moon category-icon"></i>
+                <h4 class="category-name">السريالية</h4>
+            </div>
+            <div class="category-card" onclick="showCategory('calligraphy')">
+                <i class="fas fa-pen-nib category-icon"></i>
+                <h4 class="category-name">الخط العربي</h4>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 3rem;">
+            <button class="btn-secondary" onclick="showPage('art-portal')">العودة للمحافظات</button>
+        </div>
+    </div>
+
+    <!-- Studies Portal -->
+    <div id="studies-portal" class="page">
+        <div class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title" style="font-size: 3rem;">بوابة الدراسات النقدية</h1>
+                <p class="hero-subtitle">البحوث والدراسات الأدبية النقدية</p>
+            </div>
+        </div>
+        <div class="categories-grid">
+            <div class="category-card" onclick="showCategory('poetry-studies')">
+                <i class="fas fa-feather-alt category-icon"></i>
+                <h4 class="category-name">الدراسات الشعرية</h4>
+            </div>
+            <div class="category-card" onclick="showCategory('narrative-studies')">
+                <i class="fas fa-book-open category-icon"></i>
+                <h4 class="category-name">الدراسات السردية</h4>
+            </div>
+            <div class="category-card" onclick="showCategory('theater-studies')">
+                <i class="fas fa-theater-masks category-icon"></i>
+                <h4 class="category-name">دراسات المسرح</h4>
+            </div>
+            <div class="category-card" onclick="showCategory('comparative-studies')">
+                <i class="fas fa-exchange-alt category-icon"></i>
+                <h4 class="category-name">الدراسات المقارنة</h4>
+            </div>
+            <div class="category-card" onclick="showCategory('rhetoric-studies')">
+                <i class="fas fa-balance-scale category-icon"></i>
+                <h4 class="category-name">دراسات البلاغة والنقد القديم</h4>
+            </div>
+            <div class="category-card" onclick="showCategory('cultural-studies')">
+                <i class="fas fa-globe category-icon"></i>
+                <h4 class="category-name">الدراسات الثقافية</h4>
+            </div>
+        </div>
+    </div>
+
+    <!-- Library Portal -->
+    <div id="library-portal" class="page">
+        <div class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title" style="font-size: 3rem;">بوابة المكتبات</h1>
+                <p class="hero-subtitle">الكتب الإلكترونية والمخطوطات الرقمية</p>
+            </div>
+        </div>
+        <div class="upload-tabs">
+            <div class="upload-tab active" onclick="showLibrarySection('modern')">الأدب الحديث</div>
+            <div class="upload-tab" onclick="showLibrarySection('classical')">الأدب القديم</div>
+            <div class="upload-tab" onclick="showLibrarySection('manuscripts')">المخطوطات</div>
+            <div class="upload-tab" onclick="showLibrarySection('upload-book')">رفع كتاب</div>
+        </div>
+        
+        <div id="library-modern" class="library-section">
+            <div class="library-grid" id="modernBooksGrid"></div>
+        </div>
+        
+        <div id="library-classical" class="library-section" style="display: none;">
+            <div class="hero-section" style="min-height: auto; padding: 2rem;">
+                <div class="hero-content">
+                    <h2 class="library-section-title">بوابة الأدب القديم</h2>
+                    <p class="hero-subtitle" style="font-size: 1.1rem;">الدواوين القديمة والتراث الأدبي اليمني</p>
+                </div>
+            </div>
+            <div class="library-grid" id="classicalBooksGrid"></div>
+        </div>
+        
+        <div id="library-manuscripts" class="library-section" style="display: none;">
+            <div class="portals-grid">
+                <div class="portal-card">
+                    <i class="fas fa-scroll portal-icon"></i>
+                    <h3 class="portal-title">مخطوطات قرآنية</h3>
+                </div>
+                <div class="portal-card">
+                    <i class="fas fa-book-open portal-icon"></i>
+                    <h3 class="portal-title">مخطوطات علمية</h3>
+                </div>
+                <div class="portal-card">
+                    <i class="fas fa-feather-alt portal-icon"></i>
+                    <h3 class="portal-title">مخطوطات أدبية</h3>
+                </div>
+            </div>
+        </div>
+        
+        <div id="library-upload-book" class="library-section" style="display: none;">
+            <div class="upload-section">
+                <h3 class="upload-title">رفع كتاب إلكتروني</h3>
+                <div class="file-upload-area" onclick="document.getElementById('bookFile').click()">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h4 style="color: var(--aged-gold); margin-bottom: 0.5rem;">اضغط لاختيار الملف</h4>
+                    <p style="color: rgba(245, 240, 227, 0.6);">PDF, EPUB, MOBI (الحد الأقصى 50 ميجابايت)</p>
+                    <input type="file" id="bookFile" style="display: none;" accept=".pdf,.epub,.mobi">
+                </div>
+                <div class="form-group">
+                    <label>عنوان الكتاب</label>
+                    <input type="text" id="bookTitle" placeholder="عنوان الكتاب">
+                </div>
+                <div class="form-group">
+                    <label>المؤلف</label>
+                    <input type="text" id="bookAuthor" placeholder="اسم المؤلف">
+                </div>
+                <div class="form-group">
+                    <label>التصنيف</label>
+                    <select id="bookCategory">
+                        <option value="">اختر التصنيف</option>
+                        <option value="poetry">شعر</option>
+                        <option value="novel">رواية</option>
+                        <option value="story">قصة</option>
+                        <option value="theater">مسرح</option>
+                        <option value="children">أدب أطفال</option>
+                        <option value="history">تاريخ</option>
+                        <option value="science">علوم</option>
+                        <option value="religion">دين</option>
+                        <option value="other">أخرى</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>وصف الكتاب</label>
+                    <textarea id="bookDescription" placeholder="نبذة عن الكتاب..."></textarea>
+                </div>
+                <button class="btn-primary" onclick="uploadBook()" style="width: 100%;">
+                    <i class="fas fa-upload"></i> رفع الكتاب
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upload Page -->
+    <div id="upload" class="page">
+        <div class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title" style="font-size: 3rem;">رفع المشاركات</h1>
+                <p class="hero-subtitle">شارك إبداعك مع العالم في مختلف المجالات</p>
+            </div>
+        </div>
+        <div class="upload-section">
+            <div class="upload-tabs">
+                <div class="upload-tab active" onclick="showUploadType('writing')">كتابات</div>
+                <div class="upload-tab" onclick="showUploadType('book')">كتب إلكترونية</div>
+                <div class="upload-tab" onclick="showUploadType('media')">صوتيات ومرئيات</div>
+            </div>
+            
+            <div id="upload-writing-section">
+                <div class="ai-checker-info">
+                    <i class="fas fa-robot"></i>
+                    <div>
+                        <h4 style="color: var(--electric-turquoise); margin-bottom: 0.5rem;">الفراهيدي الذكي والمدقق اللغوي</h4>
+                        <p style="color: rgba(245, 240, 227, 0.7);">سيتم فحص مشاركتك تلقائياً قبل النشر</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>نوع المشاركة</label>
+                    <select id="uploadType" onchange="updateUploadForm()">
+                        <option value="">اختر نوع المشاركة</option>
+                        <option value="poem-amoudi">شعر فصيح عمودي (مع فحص عروضي)</option>
+                        <option value="poem-tafila">شعر فصيح تفعيلة (مع فحص عروضي)</option>
+                        <option value="poem-himyari">شعر حميني</option>
+                        <option value="nathr">نثر أدبي</option>
+                        <option value="story">قصة قصيرة</option>
+                        <option value="novel">رواية (فصل)</option>
+                        <option value="proverb">مثل شعبي</option>
+                        <option value="theater">مسرحية</option>
+                        <option value="children">أدب أطفال</option>
+                        <option value="article">مقال</option>
+                        <option value="thought">خاطرة</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>المحافظة</label>
+                    <select id="uploadGovernorate">
+                        <option value="">اختر المحافظة</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>العنوان</label>
+                    <input type="text" id="uploadTitle" placeholder="عنوان المشاركة">
+                </div>
+                <div class="form-group">
+                    <label>المحتوى</label>
+                    <textarea id="uploadContent" placeholder="اكتب مشاركتك هنا..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label><span class="required">*</span> الاسم</label>
+                    <input type="text" id="uploadAuthor" placeholder="اكتب اسمك" required>
+                </div>
+                <button class="btn-primary" onclick="submitUpload()" style="width: 100%;">
+                    <i class="fas fa-paper-plane"></i> إرسال للمراجعة الذكية
+                </button>
+            </div>
+            
+            <div id="upload-book-section" style="display: none;">
+                <div class="file-upload-area" onclick="document.getElementById('uploadBookFile').click()">
+                    <i class="fas fa-book"></i>
+                    <h4 style="color: var(--aged-gold); margin-bottom: 0.5rem;">اضغط لاختيار ملف الكتاب</h4>
+                    <p style="color: rgba(245, 240, 227, 0.6);">PDF, EPUB, MOBI</p>
+                    <input type="file" id="uploadBookFile" style="display: none;" accept=".pdf,.epub,.mobi">
+                </div>
+                <div class="form-group">
+                    <label>عنوان الكتاب</label>
+                    <input type="text" placeholder="عنوان الكتاب">
+                </div>
+                <div class="form-group">
+                    <label>المؤلف</label>
+                    <input type="text" placeholder="اسم المؤلف">
+                </div>
+                <div class="form-group">
+                    <label>التصنيف</label>
+                    <select>
+                        <option value="">اختر التصنيف</option>
+                        <option value="poetry">شعر</option>
+                        <option value="novel">رواية</option>
+                        <option value="story">قصص</option>
+                        <option value="theater">مسرح</option>
+                        <option value="children">أدب أطفال</option>
+                        <option value="history">تاريخ</option>
+                        <option value="other">أخرى</option>
+                    </select>
+                </div>
+                <button class="btn-primary" style="width: 100%;">
+                    <i class="fas fa-upload"></i> رفع الكتاب
+                </button>
+            </div>
+            
+            <div id="upload-media-section" style="display: none;">
+                <div class="file-upload-area">
+                    <i class="fas fa-microphone-alt"></i>
+                    <h4 style="color: var(--aged-gold); margin-bottom: 0.5rem;">رفع تسجيل صوتي أو فيديو</h4>
+                    <p style="color: rgba(245, 240, 227, 0.6);">MP3, MP4, WAV</p>
+                </div>
+                <div class="form-group">
+                    <label>عنوان العمل</label>
+                    <input type="text" placeholder="عنوان التسجيل أو الفيديو">
+                </div>
+                <div class="form-group">
+                    <label>نوع العمل</label>
+                    <select>
+                        <option value="">اختر النوع</option>
+                        <option value="poetry-recital">إنشاد شعري</option>
+                        <option value="story-audio">قصة مسموعة</option>
+                        <option value="theater-video">مسرح مرئي</option>
+                        <option value="interview">لقاء</option>
+                        <option value="other">أخرى</option>
+                    </select>
+                </div>
+                <button class="btn-primary" style="width: 100%;">
+                    <i class="fas fa-upload"></i> رفع الملف
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Lab -->
+    <div id="ai-lab" class="page">
+        <div class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title" style="font-size: 3rem;">مختبر الذكاء الاصطناعي</h1>
+                <p class="hero-subtitle">أدوات تحليلية وتدقيقية للإبداع اليمني</p>
+            </div>
+        </div>
+        <div class="portals-grid">
+            <div class="portal-card">
+                <i class="fas fa-scroll portal-icon"></i>
+                <h3 class="portal-title">الفراهيدي الذكي</h3>
+                <p class="portal-desc">فحص عروضي شامل للقصائد العمودية والتفعيلية</p>
+            </div>
+            <div class="portal-card">
+                <i class="fas fa-spell-check portal-icon"></i>
+                <h3 class="portal-title">المدقق اللغوي الذكي</h3>
+                <p class="portal-desc">تصحيح نحوي وإملائي للنصوص الأدبية</p>
+            </div>
+            <div class="portal-card">
+                <i class="fas fa-pen-fancy portal-icon"></i>
+                <h3 class="portal-title">مساعد الكتابة</h3>
+                <p class="portal-desc">اقتراحات إبداعية لتحسين النصوص</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact" class="page">
+        <div class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title" style="font-size: 3rem;">تواصل معنا</h1>
+                <p class="hero-subtitle">انضم لشبكة المنصة الثقافية</p>
+            </div>
+        </div>
+        <div class="upload-section" style="text-align: center;">
+            <p class="portal-desc" style="margin-bottom: 2rem;">
+                نحن هنا لنستمع إليك. سواء كنت <strong>كاتباً</strong> تبحث عن منصة، أو مؤسسة تبحث عن شراكة.
+            </p>
+            <a href="mailto:tamfoundation4@gmail.com" class="btn-primary" style="text-decoration: none;">
+                <i class="fas fa-envelope"></i> أرسل رسالتك
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">تام</div>
+            <p class="footer-text">
+                منصة الإرث اليمني الذكية - نحو مجتمع معرفي يؤمن بقيم الجمال
+            </p>
+            <!-- إضافة روابط التنقل -->
+            <div class="footer-nav">
+                <a href="#" class="footer-link" onclick="showPage('home')">الرئيسية</a>
+                <span class="footer-separator">|</span>
+                <a href="#" class="footer-link" onclick="showPage('about')">من نحن</a>
+                <span class="footer-separator">|</span>
+                <a href="#" class="footer-link" onclick="showPage('achievements')">الإنجازات</a>
+                <span class="footer-separator">|</span>
+                <a href="#" class="footer-link" onclick="showPage('contact')">تواصل معنا</a>
+                <span class="footer-separator">|</span>
+                <a href="#" class="footer-link" onclick="showPage('ai-lab')">الذكاء الاصطناعي</a>
+            </div>
+            <div class="footer-copy">
+                جميع الحقوق محفوظة لدى منصة تام الثقافية الذكية
+            </div>
+        </div>
+    </footer>
+
+    <!-- AI Assistant - في أسفل الشاشة من جهة اليسار -->
+    <div class="ai-assistant" onclick="openAIChat()" title="المساعد الذكي لتام">
+        <div class="ai-bubble" id="aiBubble"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
